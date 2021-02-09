@@ -1,18 +1,26 @@
 module.exports = {
   siteMetadata: {
-    title: `Chris Shimmin`,
-    author: `Chris S`,
+    title: `CySA+ Companion`,
+    author: {
+      name: `MGA Group 1`,
+      summary: `, a group of cybersecurity analysts attempting to code.`,
+    },
+    author1: {
+      name: `David Dacalio`,
+      summary: `, learning this stuff.`,
+    },
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    siteTitle: `Chris`,
+    siteUrl: `https://cysacompanion.netlify.app/`,
+    siteTitle: `CySA+ Companion`,
+
     social: {
-      twitter: `shimmiChristo`,
-      email: `chris@chrisshimmin.com`,
-      linkedin: `in/chris-shimmin/`,
-      github: `shimmiChristo`,
+      twitter: `kylemathews`,
+      email: `davidmgaburn@gmail.com`,
+      linkedin: `test`,
+      github: `DiospyrosD`,
     },
     linkOne: `About`,
-    linkTwo: `Work`,
+    linkTwo: `Quizzes`,
     linkThree: `Blog`,
 
     menuLinks: [
@@ -23,16 +31,6 @@ module.exports = {
       {
         name: "about",
         link: "/about-me",
-      },
-    ],
-    subMenu: [
-      {
-        name: "V1",
-        link: "/v1/index.html",
-      },
-      {
-        name: "V2",
-        link: "v2/index.html",
       },
     ],
   },
@@ -47,8 +45,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/websites`,
-        name: `websites`,
+        path: `${__dirname}/content/quizzes_md`,
+        name: `quizzes_md`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/youtube`,
+        name: `youtube`,
       },
     },
     {
@@ -65,7 +70,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 630,
             },
           },
           {
@@ -102,15 +107,9 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    //`gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
 }
+

@@ -1,32 +1,16 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import { rhythm } from "../utils/typography";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Bio from "../components/bio";
 
 //* building a functional component
-const AboutPage = ({ location, heading, subheading }) => {
-  const data = useStaticQuery(graphql`
-    query AboutQuery {
-      site {
-        siteMetadata {
-          siteTitle
-          author
-          social {
-            twitter
-          }
-        }
-      }
-    }
-  `);
-  const green = `#50fa7b`;
+const AboutPage = ({ location }) => {
+  const purple = `#3b0a38`;
   const SkillsContainer = styled.section`
     display: flex;
     justify-content: space-evenly;
     margin-bottom: ${rhythm(1)};
-
     @media (max-width: 767px) {
       flex-direction: column;
     }
@@ -38,7 +22,7 @@ const AboutPage = ({ location, heading, subheading }) => {
         padding-top: 0;
       }
       width: 100%;
-      border-top: 2px solid ${green};
+      border-top: 2px solid ${purple};
       padding: ${rhythm(0.5)};
     }
   `;
@@ -54,10 +38,9 @@ const AboutPage = ({ location, heading, subheading }) => {
     margin: ${rhythm(1)};
   `;
   return (
-    <Layout location={location} title="About Me, Skills, &amp; More">
+    <Layout location={location} title="About Us, Skills, &amp; More">
       <SEO title="About Page" />
       <main>
-        <Bio />
         <h2>Skills</h2>
         <SkillsContainer className="skills-container">
           <Column>
@@ -66,25 +49,23 @@ const AboutPage = ({ location, heading, subheading }) => {
               <Item>GatsbyJS (React)</Item>
               <Item>CSS</Item>
               <Item>HTML</Item>
-              <Item>Mobile &amp; Responsive Design</Item>
-              <Item>NoSQL (MongoDB)</Item>
-              <Item>AWS</Item>
+              <Item>WordPress</Item>
             </List>
           </Column>
           <Column>
             <List>
-              <Item>e-Commerce</Item>
-              <Item>WordPress</Item>
-              <Item>Google Analytics</Item>
-              <Item>Google Tag Manager</Item>
-              <Item>Site Speed Optimization</Item>
+              <Item>PC design</Item>
+              <Item>Networking</Item>
+              <Item>Digital Forensics</Item>
+              <Item>Software Security</Item>
+              <Item>Network Security</Item>
               <Item>Mac, PC, Linux</Item>
             </List>
           </Column>
           <Column>
             <List>
               <Item>Git</Item>
-              <Item>Google Maps</Item>
+              <Item>Discord</Item>
               <Item>Facebook</Item>
               <Item>Twitter</Item>
               <Item>YouTube</Item>
@@ -94,9 +75,7 @@ const AboutPage = ({ location, heading, subheading }) => {
         <h2>More About Me</h2>
         <AboutContainer>
           <p>
-            I'm Chris, a web developer from New York City. I enjoy helping
-            others solve their web problems. I have been a web developer since
-            2016. I make videos on{" "}
+            Look out for any new content at {" "}
             <a
               className="purple"
               target="_blank"
@@ -107,7 +86,7 @@ const AboutPage = ({ location, heading, subheading }) => {
             </a>{" "}
             and I am active on{" "}
             <a
-              className="green"
+              className="purple"
               target="_blank"
               rel="noopener noreferrer"
               href="https://twitter.com/shimmiChristo"
@@ -117,16 +96,12 @@ const AboutPage = ({ location, heading, subheading }) => {
             .
           </p>
           <p>
-            I'm passionate about learning new technologies. The last few years,
-            I have been working in the e-commerce industry. Along with websites
-            and web-apps, I have been building skills outside of development,
-            such as SEO, site speed, Analytics, and Tag Manager.
+            We are an eager group of students who wish to take advantage of
+            any opportunities to learn new technologies.  
           </p>
           <p>
-            When I'm not working I'm spending time with Katie or running. We
-            love trying all the foods New York City has to offer. 20,000+
-            restaurants will keep you busy. In 2019, I ran the New York City
-            marathon - I recommend adding it to your bucket list!
+            Our mission is to help organizations secure there networks through
+            teamwork and hard work.  
           </p>
         </AboutContainer>
       </main>

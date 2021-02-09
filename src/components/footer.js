@@ -1,17 +1,16 @@
 import React from "react";
 import { useStaticQuery, Link, graphql } from "gatsby";
-
 import styled from "styled-components";
 import Image from "gatsby-image";
 
 const color = {
-  black: "#282a36",
-  white: "#f8f8f2",
-  green: "#50fa7b",
-  orange: "#ffb86c",
-  pink: "#ff79c6",
-  purple: "#bd93f9",
-};
+    black: "#140033",
+    white: "#f8f8f2",
+    teal: "#1affd1",
+    orange: "#ffb86c",
+    pink: "#ff66ff",
+    purple: "#bd93f9",
+  };
 
 const Footer = styled.footer`
   position: fixed;
@@ -28,7 +27,7 @@ const Footer = styled.footer`
   @media (max-width: 768px) {
     position: fixed;
     width: 100%;
-    height: 100px;
+    height: 30px;
     bottom: 0;
     left: 0;
     display: inline-flex;
@@ -38,9 +37,8 @@ const Footer = styled.footer`
   }
 `;
 const Navigation = styled.nav`
-  padding: 10px;
+  padding: 5px;
   flex-direction: column;
-
   > a {
     font-size: 1rem
     color: #fff;
@@ -56,35 +54,19 @@ const Navigation = styled.nav`
   }
 `;
 
-const SubNav = styled(Navigation)`
-  left: 0;
-  flex-direction: row;
-  display: inline-flex;
-  text-align: center;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-
-  > a {
-    font-size: 0.8rem;
-    margin: 0 1em;
-  }
-`;
-
-const Social = styled(SubNav)`
-  width: 100%;
-  justify-content: space-around;
-
-  > a {
+const Social = styled(Navigation)`
+    left: 0;
+    flex-direction: row;
+    display: inline-flex;
+    text-align: center;
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+    > a {
     margin: 0;
-  }
+    }
 `;
-const Span = styled.span`
-  text-decoration: none;
-`;
-const OrangeA = styled(Span)`
-  color: ${props => props.color.orange};
-`;
+
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -92,10 +74,6 @@ export default () => {
       site {
         siteMetadata {
           siteTitle
-          subMenu {
-            link
-            name
-          }
           social {
             twitter
             email
@@ -106,28 +84,28 @@ export default () => {
       }
       twitter: file(relativePath: { eq: "sm_twitter.png" }) {
         childImageSharp {
-          fixed(width: 35, height: 35) {
+          fixed(width: 28, height: 28) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       linkedin: file(relativePath: { eq: "sm_linkedin.png" }) {
         childImageSharp {
-          fixed(width: 35, height: 35) {
+          fixed(width: 28, height: 28) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       gmail: file(relativePath: { eq: "sm_gmail.png" }) {
         childImageSharp {
-          fixed(width: 35, height: 35) {
+          fixed(width: 28, height: 28) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       github: file(relativePath: { eq: "sm_github.png" }) {
         childImageSharp {
-          fixed(width: 35, height: 35) {
+          fixed(width: 28, height: 28) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -135,7 +113,7 @@ export default () => {
     }
   `);
 
-  const { social, subMenu } = data.site.siteMetadata;
+  const { social } = data.site.siteMetadata;
 
   return (
     <Footer color={color}>
@@ -153,13 +131,6 @@ export default () => {
           <Image fixed={data.github.childImageSharp.fixed} alt="github" />
         </a>
       </Social>
-      <SubNav>
-        {subMenu.map(link => (
-          <Link key={link.name} to={link.link}>
-            <OrangeA color={color}>{link.name}</OrangeA>
-          </Link>
-        ))}
-      </SubNav>
     </Footer>
   );
 };

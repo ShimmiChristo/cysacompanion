@@ -5,11 +5,11 @@ import Image from "gatsby-image";
 
 
 const color = {
-  black: "#282a36",
+  black: "#140033",
   white: "#f8f8f2",
-  green: "#50fa7b",
+  teal: "#1affd1",
   orange: "#ffb86c",
-  pink: "#ff79c6",
+  pink: "#ff66ff",
   purple: "#bd93f9",
 };
 
@@ -26,7 +26,6 @@ const Container = styled.div`
   justify-content: center;
   background: ${props => props.color.black};
   z-index: 1;
-
   * {
     text-decoration: none;
   }
@@ -36,11 +35,10 @@ const Container = styled.div`
   a:before {
     display: none;
   }
-
   @media (max-width: 768px) {
     max-width: 100%;
     width: 100%;
-    height: 150px;
+    height: 65px;
     flex-direction: row;
     display: inline-flex;
     justify-content: space-around;
@@ -52,28 +50,45 @@ const Header = styled.h1`
   text-transform: uppercase;
   display: inline-flex;
   margin-top: 1rem;
-
   @media (max-width: 768px) {
     display: none;
   }
 `;
-const ProfileImg = styled(Image)`
+const Logo = styled(Image)`
   display: none !important;
-
   @media (max-width: 768px) {
-    height: 125px;
-    width: 125px;
-    min-width: 125px;
-    min-height: 125px;
+    max-height: 50px;
+    max-width: 60px;
+    min-width: 60px;
+    min-height: 50px;
     border-radius: 50%;
     display: inline-flex !important;
     align-self: left;
   }
 `;
+const LogoFull = styled(Image)`
+    max-height: 100px;
+    max-width: 120px;
+    min-width: 120px;
+    min-height: 100px;
+    border-radius: 50%;
+    display: inline-flex !important;
+    align-self: left;
+    margin-top: 35px;
+    @media (max-width: 768px) {
+      max-height: 50px;
+      max-width: 60px;
+      min-width: 60px;
+      min-height: 50px;
+      border-radius: 50%;
+      display: inline-flex !important;
+      align-self: left;
+      margin-top: 0px;
+    }
+`;
 const Navigation = styled.nav`
   padding: 1vw;
   flex-direction: column;
-
   > a {
     font-size: 1rem;
     color: #fff;
@@ -82,18 +97,17 @@ const Navigation = styled.nav`
     box-shadow: none;
     text-align: center;
   }
-
   @media (max-width: 768px) {
     display: inline-flex;
     flex-direction: row;
-
+    max-height: 100px;
     > a {
       margin: 0 10px 0;
     }
   }
 `;
-const GreenA = styled.span`
-  color: ${props => props.color.green};
+const TealA = styled.span`
+  color: ${props => props.color.teal};
 `;
 const PurpleA = styled.span`
   color: ${props => props.color.purple};
@@ -101,16 +115,12 @@ const PurpleA = styled.span`
 const PinkA = styled.span`
   color: ${props => props.color.pink};
 `;
-const WhiteA = styled.span`
-  color: ${props => props.color.white};
-`;
 
 export default () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       site {
         siteMetadata {
-          siteTitle
           linkOne
           linkTwo
           linkThree
@@ -118,15 +128,18 @@ export default () => {
             link
             name
           }
-          subMenu {
-            link
-            name
+        }
+      }
+      logo: file(relativePath: { eq: "logo1.png" }) {
+        childImageSharp {
+          fixed(width: 100, height: 100) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
-      profileImage: file(relativePath: { eq: "profile-pic.jpg" }) {
+      logoFull: file(relativePath: { eq: "logo1.png" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
+          fixed(width: 200, height: 200) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -134,23 +147,23 @@ export default () => {
     }
   `);
 
-  const { siteTitle, linkOne, linkTwo, linkThree } = data.site.siteMetadata;
+  const { linkOne, linkTwo, linkThree } = data.site.siteMetadata;
 
   return (
     <Container color={color}>
       <Header color={color}>
         <Link stlye="width: 100%;" to="/">
-          <WhiteA color={color}>{siteTitle}</WhiteA>
+        <Logo fixed={data.logo.childImageSharp.fixed} alt="" />
         </Link>
       </Header>
       <Link stlye="width: 100%;" to="/">
-        <ProfileImg fixed={data.profileImage.childImageSharp.fixed} alt="" />
+        <LogoFull fixed={data.logoFull.childImageSharp.fixed} alt="" />
       </Link>
       <Navigation color={color}>
         <Link stlye="width: 100%;" to="/about" activeClassName="active">
-          <GreenA color={color}>{linkOne}</GreenA>
+          <TealA color={color}>{linkOne}</TealA>
         </Link>
-        <Link to="/work" activeClassName="active">
+        <Link to="/quizzes" activeClassName="active">
           <PurpleA color={color}>{linkTwo}</PurpleA>
         </Link>
         <Link to="/blog" activeClassName="active">
