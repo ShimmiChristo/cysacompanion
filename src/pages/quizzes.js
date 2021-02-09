@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Quiz1 from "../components/quiz1";
+import "../components/global.css"
 
 const QuizPage = ({ location }) => {
   return (

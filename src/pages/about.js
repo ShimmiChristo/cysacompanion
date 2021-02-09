@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { rhythm } from "../utils/typography";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import "../components/global.css"
 
 //* building a functional component
 const AboutPage = ({ location }) => {
