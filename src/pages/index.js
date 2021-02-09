@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Carousel from "../components/carousel"
-import "../components/global.css"
+import React from "react";
+import { graphql } from "gatsby";
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Carousel from "../components/carousel";
+import "../components/global.css";
 
 
 class HomeIndex extends React.Component {
@@ -15,9 +15,11 @@ class HomeIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Home Page" />
-        <Bio />
-        <Carousel key="blog" title="Blog Posts" data={data.blog.edges} />
-        <Carousel key="youtube" title="YouTube" data={data.youtube.edges} />
+        <Bio
+          heading="Chris Shimmin | New York City"
+          subheading="Web Developer, YouTuber, Entrepreneur, Online Analytics-er"
+        />
+        <Carousel key="website" title="Websites" data={data.website.edges} />
       </Layout>
     );
   }
@@ -32,34 +34,9 @@ export const pageQuery = graphql`
         title
       }
     }
-    blog: allMarkdownRemark(
-      filter: { frontmatter: { category: { eq: "blog" } } }
-      sort: { order: ASC, fields: frontmatter___date }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            category
-            title
-            description
-            url {
-              childImageSharp {
-                fixed(width: 280) {
-                  ...GatsbyImageSharpFixed
-                }
-              }
-            }
-          }
-          id
-        }
-      }
-    }
-    youtube: allMarkdownRemark(
-      filter: { frontmatter: { category: { eq: "youtube" } } }
-      sort: { order: ASC, fields: frontmatter___date }
+    website: allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: "website" } } }
+      sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {
         node {

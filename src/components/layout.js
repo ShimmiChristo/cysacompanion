@@ -14,6 +14,7 @@ class Layout extends React.Component {
       margin-left: 200px;
       padding: ${rhythm(2)};
       max-width: 1200px;
+
       @media (max-width: 768px) {
         margin: 150px auto 100px;
         padding: ${rhythm(1)};

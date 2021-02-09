@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { rhythm } from "../utils/typography";
+import { rhythm, scale } from "../utils/typography";
 import Image from "gatsby-image";
 import styled from "styled-components";
 // import "./global.css";
@@ -86,6 +86,7 @@ class Carousel extends React.Component {
       height: 200px;
       margin: 0 10px;
       flex-shrink: 0;
+
       a {
         display: initial;
       }
@@ -104,6 +105,7 @@ class Carousel extends React.Component {
     const NextButton = styled(CarouselBtn)`
       height: 50px;
       width: 50px;
+
       &:before {
         content: "";
         display: inline-block;
@@ -118,6 +120,7 @@ class Carousel extends React.Component {
     const PreviousButton = styled(CarouselBtn)`
       height: 50px;
       width: 50px;
+
       &:before {
         content: "";
         display: inline-block;
